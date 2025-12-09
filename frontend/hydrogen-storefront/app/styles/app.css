@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 :root {
   --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px;
@@ -621,4 +623,715 @@ button.reset:hover:not(:has(> *)) {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+}
+
+
+/* GLOBAL FONT CONTROL */
+body {
+  font-family: 'Playfair Display', serif;
+}
+
+p, li, input, button, a, span {
+  font-family: 'Playfair Display', serif;
+}
+
+/* NAVBAR LINK COLORS */
+.header-menu-item,
+.header > a {
+  color: #A50034 !important;
+}
+
+.header-menu-item:hover,
+.header > a:hover {
+  color: #7c0028 !important;
+}
+
+/* ACTIVE NAV ITEM */
+.header-menu-item.active {
+  border-bottom: 2px solid #A50034;
+  padding-bottom: 2px;
+}
+
+.footer-menu a {
+  color: #ffffff !important;
+}
+
+.footer-menu a:hover {
+  color: #e3e3e3 !important;
+}
+
+
+
+/* ---------------------------
+   HERO BANNER
+--------------------------- */
+.hero-banner {
+  width: 100%;
+  height: 480px;
+  background-image: url('/hero-banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;  /* <-- updated */
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0px 2px 10px rgba(0,0,0,0.8);
+  font-family: 'Playfair Display', serif;
+}
+
+
+.section-block {
+  padding: 2rem 0;
+}
+
+.home {
+  margin-top: 1rem;
+}
+
+
+/* ---------------------------
+   COLLECTION CARDS
+--------------------------- */
+/* .collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+} */
+ /* .collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+} */
+
+
+.collection-card {
+  position: relative;
+  height: 350px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.collection-card:hover {
+  transform: scale(1.02);
+}
+
+.collection-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-card-title {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #333;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  backdrop-filter: blur(4px);
+}
+
+.collection-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.collection-card {
+  width: 100%;
+  height: 320px; /* fixed height for all cards */
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.collection-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* makes all images equal */
+}
+
+.collection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.collection-card-title {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(255,255,255,0.85);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding: 0 1rem; /* small side padding only */
+}
+
+.section {
+  padding: 3rem 2rem;
+}
+
+.section h1, 
+.section h2 {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.section p {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ---------------------------
+   CTA BUTTONS
+--------------------------- */
+.card-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  background-color: rgba(165, 0, 52, 0.9);
+}
+
+.collection-card {
+  padding-bottom: 50px; /* space for button */
+}
+
+/* ---------------------------
+   NEW ARRIVALS PREMIUM STYLE
+----------------------------*/
+
+/* slightly different card style than collections */
+.arrival-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 350px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.arrival-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.arrival-card:hover img {
+  transform: scale(1.05);
+}
+
+.arrival-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.arrival-card-info {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 8px 14px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+
+.arrival-card-info h3 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.arrival-card-info .price {
+  margin: 4px 0 0 0;
+  color: #A50034;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* GLOBAL SECTION SPACING */
+.section,
+.section-block {
+  padding: 3rem 2rem;
+}
+
+.section h1,
+.section h2,
+.section-block h1,
+.section-block h2 {
+  margin-bottom: 1rem;
+}
+
+.home {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section,
+.section-block {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---------------------------
+   HERO TEXT ANIMATION
+--------------------------- */
+.hero-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------
+   HERO TEXT ANIMATION
+--------------------------- */
+.hero-text-line {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+.hero-text-line.line-1 {
+  animation-delay: 0.2s;
+}
+
+.hero-text-line.line-2 {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-cta-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background-color: rgba(165, 0, 52, 0.9); /* brand color */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hero-cta-btn:hover {
+  background-color: #7c0028; /* darker */
+  transform: translateY(-2px);
+}
+
+/* ---------------------------
+   TESTIMONIALS SECTION
+--------------------------- */
+
+.testimonials-section {
+  text-align: center;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.testimonial-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* ---------------------------
+   WHY CHOOSE JAMI SECTION
+----------------------------*/
+.why-jami {
+  text-align: center;
+}
+
+.why-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.why-card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.why-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.why-card h3 {
+  margin: 0.5rem 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.why-card p {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.shop-category {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.category-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease;
+}
+
+.category-item:hover img {
+  transform: scale(1.05);
+}
+
+.category-item p {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+}
+
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 3rem 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+}
+
+.footer-col p {
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.footer-col a {
+  display: block;
+  color: #fff;
+  opacity: 0.85;
+  margin-bottom: 0.4rem;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.footer-col a:hover {
+  opacity: 1;
+  color: #A50034;
+}
+
+.social-links a {
+  margin-right: 1rem;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  text-align: center;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+/* ---------------------------
+   MINIMAL PREMIUM SLIDER (Option A)
+----------------------------*/
+
+.premium-slider-section {
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider-track {
+  display: flex;
+  gap: 2rem;
+  animation: scrollSlider 22s linear infinite;
+}
+
+.slider-image {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.slider-image:hover {
+  transform: scale(1.04);
+}
+
+@keyframes scrollSlider {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* step 16 day 4 */
+
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 320px;
+    background-position: center top;
+  }
+
+  .hero-text {
+    font-size: 1.4rem;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .line-1 { animation-delay: 0s !important; }
+  .line-2 { animation-delay: 0.4s !important; }
+}
+
+@media (max-width: 768px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    padding: 0 .5rem;
+  }
+
+  .collection-card,
+  .arrival-card {
+    height: 240px !important;
+  }
+
+  .collection-card-title,
+  .arrival-card-info {
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-container {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .testimonial-card {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-image {
+    width: 200px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section,
+  .section-block {
+    padding: 1.5rem 1rem;
+  }
+
+  .home {
+    gap: 2rem;
+  }
+}
+
+/* ---------------------------
+   TRUST RIBBON
+----------------------------*/
+
+.trust-ribbon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 1280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  gap: 1rem;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  color: #A50034;
+}
+
+.trust-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  color: #A50034;
+}
+
+.trust-item p {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .trust-ribbon {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    padding: 1rem;
+  }
+
+  .trust-item {
+    width: 45%;
+  }
+
+  .trust-icon {
+    font-size: 1.5rem;
+  }
+
+  .trust-item p {
+    font-size: 0.85rem;
+  }
 }

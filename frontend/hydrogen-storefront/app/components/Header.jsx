@@ -218,10 +218,9 @@ const FALLBACK_HEADER_MENU = {
  *   isPending: boolean;
  * }}
  */
-function activeLinkStyle({isActive, isPending}) {
+function activeLinkStyle({isActive}) {
   return {
     fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? '#7c0028' : '#A50034',
   };
 }
 

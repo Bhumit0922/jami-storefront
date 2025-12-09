@@ -1,23 +1,58 @@
-import {Suspense} from 'react';
-import {Await, NavLink} from 'react-router';
+import { Suspense } from 'react';
+import { Await, NavLink } from 'react-router';
 
 /**
  * @param {FooterProps}
  */
-export function Footer({footer: footerPromise, header, publicStoreDomain}) {
+export function Footer({ footer: footerPromise, header, publicStoreDomain }) {
   return (
     <Suspense>
       <Await resolve={footerPromise}>
         {(footer) => (
           <footer className="footer">
-            {footer?.menu && header.shop.primaryDomain?.url && (
-              <FooterMenu
-                menu={footer.menu}
-                primaryDomainUrl={header.shop.primaryDomain.url}
-                publicStoreDomain={publicStoreDomain}
-              />
-            )}
+
+            <div className="footer-content">
+
+              <div className="footer-col">
+                <h3>JAMI Premium</h3>
+                <p>Premium Ethnic Wear crafted with elegance and tradition.</p>
+                <div className="social-links">
+                  <a href="#">Instagram</a>
+                  <a href="#">Facebook</a>
+                  <a href="#">WhatsApp</a>
+                </div>
+              </div>
+
+              <div className="footer-col">
+                <h4>Quick Links</h4>
+                <a href="/">Home</a>
+                <a href="/collections/all">Shop</a>
+                <a href="/pages/about">About Us</a>
+                <a href="/pages/contact">Contact</a>
+              </div>
+
+              <div className="footer-col">
+                <h4>Customer Care</h4>
+                <a href="/policies/refund-policy">Returns & Refunds</a>
+                <a href="/policies/shipping-policy">Shipping Info</a>
+                <a href="/pages/track-order">Track Order</a>
+                <a href="/pages/faq">FAQ</a>
+              </div>
+
+              <div className="footer-col">
+                <h4>Contact Us</h4>
+                <p>Email: support@jami.com</p>
+                <p>Phone: +91 98765 43210</p>
+              </div>
+
+            </div>
+
+            <div className="footer-bottom">
+              © {new Date().getFullYear()} JAMI Premium. All Rights Reserved.
+            </div>
+
           </footer>
+
         )}
       </Await>
     </Suspense>
@@ -31,7 +66,7 @@ export function Footer({footer: footerPromise, header, publicStoreDomain}) {
  *   publicStoreDomain: string;
  * }}
  */
-function FooterMenu({menu, primaryDomainUrl, publicStoreDomain}) {
+function FooterMenu({ menu, primaryDomainUrl, publicStoreDomain }) {
   return (
     <nav className="footer-menu" role="navigation">
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
@@ -39,8 +74,8 @@ function FooterMenu({menu, primaryDomainUrl, publicStoreDomain}) {
         // if the url is internal, we strip the domain
         const url =
           item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
+            item.url.includes(publicStoreDomain) ||
+            item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url;
         const isExternal = !url.startsWith('/');
@@ -112,10 +147,9 @@ const FALLBACK_FOOTER_MENU = {
  *   isPending: boolean;
  * }}
  */
-function activeLinkStyle({isActive, isPending}) {
+function activeLinkStyle({ isActive }) {
   return {
     fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'white',
   };
 }
 
