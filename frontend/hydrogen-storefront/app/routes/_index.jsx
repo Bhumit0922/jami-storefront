@@ -2,6 +2,9 @@ import { Await, useLoaderData, Link } from 'react-router';
 import { Suspense } from 'react';
 import { Image } from '@shopify/hydrogen';
 import { ProductItem } from '~/components/ProductItem';
+import { useEffect } from "react";
+
+
 
 /**
  * @type {Route.MetaFunction}
@@ -70,7 +73,7 @@ function loadDeferredData({ context }) {
 
 function HeroBanner() {
   return (
-    <section className='hero-banner'>
+    <section className='hero-banner hero-banner'>
       <div className="hero-text">
         <div className="hero-text-line line-1">Premium Ethnic Wear</div>
         <div className="hero-text-line line-2">Crafted for Every Celebration</div>
@@ -85,6 +88,25 @@ function HeroBanner() {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".reveal, .reveal-soft, .reveal-zoom"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("active");
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  }, []);
+
+
   return (
     <div className="home">
       <HeroBanner />
@@ -97,51 +119,20 @@ export default function Homepage() {
 
       <section className="section">
         <h2>Explore Our Collections</h2>
-
-        {/* <div className="collection-grid">
-
-          <div className="collection-card">
-            <img src="/collection-kurtis.jpg" alt="Premium Kurtis" />
-            <div className="collection-card-title">Premium Kurtis</div>
-
-            <a href="/collections/premium-kurtis" className="cta-btn card-btn">
-              Shop Kurtis
-            </a>
-          </div>
-
-          <div className="collection-card">
-            <img src="/collection-marriage.jpg" alt="Marriage Wear" />
-            <div className="collection-card-title">Marriage Wear</div>
-
-            <a href="/collections/marriage-wear" className="cta-btn card-btn">
-              Shop Marriage Wear
-            </a>
-          </div>
-
-          <div className="collection-card">
-            <img src="/collection-festive.jpg" alt="Festive Wear" />
-            <div className="collection-card-title">Festive Wear</div>
-
-            <a href="/collections/festive-wear" className="cta-btn card-btn">
-              Shop Festive Wear
-            </a>
-          </div> */}
-
         <div className="collection-grid">
-
-          <div className="collection-card">
+          <div className="collection-card reveal reveal-delay-1">
             <img src="/collection-kurtis.jpg" alt="Premium Kurtis" />
             <div className="collection-card-title">Premium Kurtis</div>
             <a href="/collections/premium-kurtis" className="cta-btn card-btn">Shop Kurtis</a>
           </div>
 
-          <div className="collection-card">
+          <div className="collection-card reveal reveal-delay-2">
             <img src="/collection-marriage.jpg" alt="Marriage Wear" />
             <div className="collection-card-title">Marriage Wear</div>
             <a href="/collections/marriage-wear" className="cta-btn card-btn">Shop Marriage Wear</a>
           </div>
 
-          <div className="collection-card">
+          <div className="collection-card reveal reveal-delay-3">
             <img src="/collection-festive.jpg" alt="Festive Wear" />
             <div className="collection-card-title">Festive Wear</div>
             <a href="/collections/festive-wear" className="cta-btn card-btn">Shop Festive Wear</a>
@@ -166,7 +157,7 @@ export default function Homepage() {
                     <Link
                       key={product.id}
                       to={`/products/${product.handle}`}
-                      className="arrival-card"
+                      className="arrival-card reveal-zoom reveal-delay-1"
                     >
                       <img src={product.featuredImage.url} alt={product.title} />
                       <div className="arrival-card-info">
@@ -185,11 +176,11 @@ export default function Homepage() {
         </Suspense>
       </section>
 
-      <section className="section testimonials-section">
+      <section className="section testimonials-section reveal-soft">
         <h2>What Our Customers Say</h2>
 
         <div className="testimonials-grid">
-          <div className="testimonial-card">
+          <div className="testimonial-card reveal reveal-delay-1">
             <img src="/user.png" alt="Customer" className="testimonial-avatar" />
             <p className="testimonial-text">
               “JAMI Premium has the most elegant ethnic wear. The fabric quality is outstanding.”
@@ -197,7 +188,7 @@ export default function Homepage() {
             <h4 className="testimonial-name">bhumit Solanki</h4>
           </div>
 
-          <div className="testimonial-card">
+          <div className="testimonial-card reveal reveal-delay-2">
             <img src="/user.png" alt="Customer" className="testimonial-avatar" />
             <p className="testimonial-text">
               “Loved the festive collection! Perfect for weddings and celebrations.”
@@ -205,7 +196,7 @@ export default function Homepage() {
             <h4 className="testimonial-name">Bhumit Solanki</h4>
           </div>
 
-          <div className="testimonial-card">
+          <div className="testimonial-card reveal reveal-delay-3">
             <img src="/user.png" alt="Customer" className="testimonial-avatar" />
             <p className="testimonial-text">
               “Premium designs at reasonable prices. Highly recommended!”
@@ -214,6 +205,18 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+
+      <section className="section lookbook">
+        <h2>JAMI Lookbook</h2>
+
+        <div className="lookbook-grid">
+          <img src="/look.png" className="reveal-zoom reveal-delay-1" />
+          <img src="/look.png" className="reveal-zoom reveal-delay-2" />
+          <img src="/look.png" className="reveal-zoom reveal-delay-3" />
+          <img src="/look.png" className="reveal-zoom reveal-delay-4" />
+        </div>
+      </section>
+
 
       {/* ---------------------------
       Premium Brand Slider
@@ -232,7 +235,7 @@ export default function Homepage() {
         </div>
       </section>
 
-
+      {/* 
       <section className="section why-jami">
         <h2>Why Choose JAMI Premium?</h2>
 
@@ -261,30 +264,56 @@ export default function Homepage() {
             <p>Shop confidently with hassle-free return support.</p>
           </div>
         </div>
+      </section> */}
+
+      <section className="section why-choose-us">
+        <h2>Why Choose JAMI?</h2>
+
+        <div className="why-grid">
+          <div className="why-item reveal reveal-delay-1">
+            <span className="icon">✨</span>
+            <p>Premium Quality Fabrics</p>
+          </div>
+
+          <div className="why-item reveal reveal-delay-2">
+            <span className="icon">🚚</span>
+            <p>Fast & Reliable Delivery</p>
+          </div>
+
+          <div className="why-item reveal reveal-delay-3">
+            <span className="icon">🔄</span>
+            <p>Easy 7-Day Returns</p>
+          </div>
+
+          <div className="why-item reveal reveal-delay-4">
+            <span className="icon">💳</span>
+            <p>Secure Payments</p>
+          </div>
+        </div>
       </section>
 
       <section className="section shop-category">
         <h2>Shop by Category</h2>
 
         <div className="category-grid">
-          <Link to="/collections/premium-kurtis" className="category-item">
+          <Link to="/collections/premium-kurtis" className="category-item reveal reveal-delay-1">
             <img src="/collection-kurtis.jpg" alt="Kurtis" />
             <p>Kurtis</p>
           </Link>
 
-          <Link to="/collections/marriage-wear" className="category-item">
+          <Link to="/collections/marriage-wear" className="category-item reveal reveal-delay-2">
             <img src="/collection-marriage.jpg" alt="Marriage Wear" />
             <p>Marriage Wear</p>
           </Link>
 
-          <Link to="/collections/festive-wear" className="category-item">
+          <Link to="/collections/festive-wear" className="category-item reveal reveal-delay-3">
             <img src="/collection-festive.jpg" alt="Festive Wear" />
             <p>Festive Wear</p>
           </Link>
         </div>
       </section>
 
-      <section className="trust-ribbon">
+      <section className="trust-ribbon reveal-soft">
         <div className="trust-item">
           <span className="trust-icon">⚡</span>
           <p>Fast Delivery</p>
@@ -305,11 +334,10 @@ export default function Homepage() {
           <p>COD Available</p>
         </div>
       </section>
-
-
     </div >
-  );
 
+
+  );
 }
 
 /**
