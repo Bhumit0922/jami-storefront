@@ -80,13 +80,6 @@ export default function Collection() {
 
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   // Fade-in animation for product cards
-  React.useEffect(() => {
-    const cards = document.querySelectorAll(".premium-card.fade-in");
-    cards.forEach((card, i) => {
-      setTimeout(() => card.classList.add("show"), i * 50);
-    });
-  }, [filteredProducts]);
-
 
   /* Helper to apply filters */
   const applyFilter = (key, value) => {
@@ -99,29 +92,41 @@ export default function Collection() {
   };
 
   /* Start with ALL products */
-  let filteredProducts = [...collection.products.nodes];
+  const filteredProducts = React.useMemo(() => {
+    let products = [...collection.products.nodes];
 
-  /* SIZE FILTER */
-  if (sizeFilter) {
-    filteredProducts = filteredProducts.filter((product) =>
-      product.options?.some(
-        (opt) =>
-          opt.name.toLowerCase() === "size" &&
-          opt.values?.includes(sizeFilter)
-      )
-    );
-  }
+    /* SIZE FILTER */
+    if (sizeFilter) {
+      products = products.filter((product) =>
+        product.options?.some(
+          (opt) =>
+            opt.name.toLowerCase() === "size" &&
+            opt.values?.includes(sizeFilter)
+        )
+      );
+    }
 
-  /* PRICE FILTER */
-  filteredProducts = filteredProducts.filter((product) => {
-    const price = Number(product.priceRange.minVariantPrice.amount);
+    /* PRICE FILTER */
+    products = products.filter((product) => {
+      const price = Number(product.priceRange.minVariantPrice.amount);
 
-    if (priceFilter === "UNDER_1000") return price < 1000;
-    if (priceFilter === "1000_2000") return price >= 1000 && price <= 2000;
-    if (priceFilter === "ABOVE_2000") return price > 2000;
+      if (priceFilter === "UNDER_1000") return price < 1000;
+      if (priceFilter === "1000_2000") return price >= 1000 && price <= 2000;
+      if (priceFilter === "ABOVE_2000") return price > 2000;
 
-    return true;
-  });
+
+      return true;
+    });
+
+    return products;
+  }, [collection.products.nodes, sizeFilter, priceFilter]);
+
+  React.useEffect(() => {
+    const cards = document.querySelectorAll(".premium-card.fade-in");
+    cards.forEach((card, i) => {
+      setTimeout(() => card.classList.add("show"), i * 50);
+    });
+  }, [filteredProducts]);
 
   // ⭐ ADD THIS HERE — BEFORE return(...)
   React.useEffect(() => {
